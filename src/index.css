@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Mercusuar';
+  src: url('./assets/fonts/MercusuarBold-d9w6x.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mercusuar';
+  src: url('./assets/fonts/MercusuarBoldItalic-L346E.otf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+* {
+  font-family: Mercusuar;
+}
