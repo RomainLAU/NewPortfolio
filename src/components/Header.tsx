@@ -46,22 +46,17 @@ export default function Header({
         <NavLink
           to={page.url}
           key={`url-${page.name}`}
-          className={`flex-1 hover:bg-slate-800 transition duration-300 linear ${
-            isOpen ? 'opacity-100 w-full' : 'opacity-0 w-0'
-          }`}
+          className={`flex-1 hover:bg-slate-800 transition duration-300 linear w-full`}
         >
           {({ isActive }) => (
             <motion.span
               className={`${
                 isActive ? 'text-red-500' : 'text-grey-500'
-              } h-full flex items-center justify-center text-9xl`}
-              initial={{
-                x: '-500%',
-                fontSize: '4rem',
-              }}
+              } h-full flex items-center justify-center text-9xl opacity-0`}
               animate={{
-                x: '0%',
-                fontSize: '8rem',
+                x: ['-500%', '0%'],
+                fontSize: ['4rem', '8rem'],
+                opacity: [0, 1],
               }}
             >
               {page.name}
