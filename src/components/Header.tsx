@@ -18,28 +18,38 @@ export default function Header({
     { url: '/', name: 'Romain Laurent' },
     { url: '/xp', name: 'My Experience' },
   ];
-  const [headerWidth, setHeaderWidth] = useState('0vw');
+  const [headerProps, setHeaderProps] = useState({
+    left: '-100vw',
+    fontVariationSettings:
+      "'wght' 1000, 'wdth' 25, 'opsz' 8, 'GRAD' -200, 'XTRA' 323, 'slnt' -10",
+  });
 
   useEffect(() => {
     if (isOpen) {
-      setHeaderWidth('100vw');
+      setHeaderProps({
+        left: '0vw',
+        fontVariationSettings:
+          "'wght' 1000, 'wdth' 151, 'opsz' 144, 'GRAD' 150, 'XTRA' 603, 'slnt' -10",
+      });
     } else {
-      setHeaderWidth('0vw');
+      setHeaderProps({
+        left: '-100vw',
+        fontVariationSettings:
+          "'wght' 1000, 'wdth' 25, 'opsz' 8, 'GRAD' -200, 'XTRA' 323, 'slnt' -10",
+      });
     }
   }, [isOpen]);
 
   return (
     <motion.div
-      className={`flex flex-col items-center bg-black text-white h-screen fixed z-40 ${
-        isOpen ? 'w-screen' : 'w-0'
-      }`}
-      animate={{
-        width: headerWidth,
+      className={`flex flex-col items-center bg-black text-white w-screen h-screen overflow-auto absolute top-0 z-40`}
+      initial={{
+        left: '-100vw',
       }}
+      animate={{ left: headerProps.left }}
       transition={{
         type: 'Inertia',
         duration: 1,
-        x: { duration: 10 },
       }}
     >
       {pages.map((page) => (
@@ -50,13 +60,23 @@ export default function Header({
         >
           {({ isActive }) => (
             <motion.span
-              className={`${
-                isActive ? 'text-red-500' : 'text-grey-500'
-              } h-full flex items-center justify-center text-9xl opacity-0`}
+              className={`h-full flex items-center justify-center text-9xl`}
+              initial={{
+                ...headerProps,
+                color: isActive ? '#b790f5' : 'white',
+              }}
               animate={{
-                x: ['-500%', '0%'],
-                fontSize: ['4rem', '8rem'],
-                opacity: [0, 1],
+                ...headerProps,
+                color: isActive ? '#b790f5' : 'white',
+              }}
+              transition={{
+                type: 'Inertia',
+                duration: 1,
+              }}
+              whileHover={{
+                fontVariationSettings:
+                  "'wght' 1000, 'wdth' 151, 'opsz' 144, 'GRAD' 150, 'XTRA' 603, 'slnt' 0",
+                color: '#b790f5',
               }}
             >
               {page.name}

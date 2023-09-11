@@ -9,9 +9,9 @@ export default function Home() {
 
   return (
     <div className="flex justify-center h-screen items-center flex-col gap-y-8">
-      <h1 className="text-blue-400 font-bold">Hello world</h1>
+      <h1 className="text-mainPurple font-bold">Hello world</h1>
       <motion.div
-        className={'w-96 h-96 bg-cyan-700 rounded-3xl'}
+        className={'w-96 h-96 bg-mainPurple rounded-3xl'}
         initial={{ x: 0, y: 0, rotate: 0 }}
         animate={{
           x,
