@@ -1,4 +1,4 @@
-import { motion, motionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -9,7 +9,6 @@ type PageType = {
 
 export default function Header({
   isOpen,
-  setIsOpen,
 }: {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
